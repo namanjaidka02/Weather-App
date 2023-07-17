@@ -17,7 +17,7 @@
   align-items: center;
   flex-direction: column;
 
-  margin: 3rem;
+  margin: 2rem;
 }
 
 .text {
@@ -31,7 +31,7 @@
 .icon-container {
   display: flex;
   justify-content: center;
-  margin-top: 5.5rem;
+  margin-top: 4rem;
 }
 
 .weather-type-icon {
@@ -43,7 +43,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 5.5rem;
+  margin-top: 4rem;
   border-bottom: 2px solid gray;
 }
 
