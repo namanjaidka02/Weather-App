@@ -5,10 +5,10 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body>
-        <link
+        {/* <link
           rel="stylesheet"
           href="/fontawesome-free-5.15.3-web/css/all.min.css"
-        />
+        /> */}
         <Main />
         <NextScript />
       </body>

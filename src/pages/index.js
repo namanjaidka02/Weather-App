@@ -1,19 +1,27 @@
 import { useEffect, useState } from "react";
+import { render } from "react-dom";
 
 export default function Home() {
   const [weather, setWeatherData] = useState("");
+  const [city, setCity] = useState("");
 
-  useEffect(() => {
-    const fetchWeatherData = async () => {
-      const res = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=511a32b9b1da4f71b5c154927231607&q=Chandigarh`
-      );
-      const data = await res.json();
-      setWeatherData(data);
-    };
+  // useEffect(() => {
+  const fetchWeatherData = async () => {
+    const res = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=511a32b9b1da4f71b5c154927231607&q=${city}`
+    );
+    const data = await res.json();
+    setWeatherData(data);
+  };
 
+  // fetchWeatherData();
+  // }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     fetchWeatherData();
-  }, []);
+    setCity("");
+  };
 
   let renderImage;
   switch (weather.current?.condition?.text) {
@@ -42,6 +50,9 @@ export default function Home() {
     case "Moderate or heavy rain shower":
       renderImage = "https://www.flaticon.com/free-icon/rain_3157575";
       break;
+    case "Light rain shower":
+      renderImage = "https://cdn-icons-png.flaticon.com/128/1959/1959342.png";
+      break;
     default:
     case "Clear":
       renderImage = "https://cdn-icons-png.flaticon.com/128/4150/4150908.png";
@@ -64,6 +75,15 @@ export default function Home() {
   return (
     <>
       <div className="weather-container">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={city}
+            placeholder="search city"
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </form>
+
         <div className="text-container">
           <p className="text day-date">{currentDay}th</p>
           <p className="text time">{currentTime}</p>
